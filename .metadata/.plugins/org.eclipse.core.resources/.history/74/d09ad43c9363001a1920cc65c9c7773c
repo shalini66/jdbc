@@ -1,0 +1,7 @@
+package com.capgemeini.springrest.beans;
+
+public class EmployeeResponse {
+	private String error;
+	private String message;
+	
+}

@@ -1,0 +1,23 @@
+package com.capgemeini.springrest.controller;
+
+import java.awt.PageAttributes.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.capgemeini.springrest.beans.EmployeePrimaryInfo;
+import com.capgemeini.springrest.service.EmployeeService;
+@Controller
+public class EmployeeRestController {
+	@Autowired
+	private EmployeeService service;
+	@GetMapping(path = "/getEmployee", produces = MediaType.APPLICATION_JSON_VALUE )
+	@ResponseBody
+	public void getEmployee(int id) {
+		EmployeePrimaryInfo info = service.getEmployeeInfo(id);
+		System.out.println(info);
+		return info;
+	}
+}

@@ -1,0 +1,55 @@
+package com.capgemini.springmvc.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.capgemini.springmvc.dto.User;
+@Controller
+public class SpringController {
+
+	@GetMapping("/hello") 
+	public String displayHello(ModelMap map) {
+		map.addAttribute("hello", "Welcome to Spring MVC"); 
+		return "hello";
+	}
+
+	@GetMapping("/form")
+	public String form() {
+		System.out.println("FormData");
+		return "form";
+	}
+	@PostMapping("/formdata")
+	public String formData(HttpServletRequest req) {
+		int id= Integer.parseInt(req.getParameter("id"));
+		String name=req.getParameter("name");
+		String email= req.getParameter("email");
+		req.setAttribute("id", id);
+		req.setAttribute("name", name);
+		req.setAttribute("email", email);
+
+		return "formData";
+	}
+	@PostMapping("/requestParam")
+	public String submitData(@RequestParam(name="id") int id ,
+	@RequestParam(name="name") String name,
+	@RequestParam(name="email") String email, ModelMap map){
+		map.addAttribute("id", id);
+		map.addAttribute("name", name);
+		map.addAttribute("email", email);
+		
+		return "formData";
+	}
+	
+	@PostMapping("/submitDto")
+	public String submitFormData(User user, ModelMap map){
+				map.addAttribute("id", user.getId());
+				map.addAttribute("name", user.getName());
+				map.addAttribute("email", user.ge);
+				return "formData";
+			}
+}

@@ -1,0 +1,13 @@
+package com.capgemini.springmvc.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+
+public class EntityManagerFactoryConfig {
+	@Bean
+	public LocalContainerEntityManagerFactoryBean getEntityManager() {
+		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+		factoryBean.setPersistenceUnitName("emsPersistenceUnit");
+		return factoryBean;
+	}
+}

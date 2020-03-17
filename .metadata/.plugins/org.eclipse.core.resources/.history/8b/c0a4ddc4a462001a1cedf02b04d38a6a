@@ -1,0 +1,26 @@
+package com.capgemini.springmvc.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;import lombok.Data;
+@Controller
+public class EmployeeController {
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		CustomDateEditor dateEditor = new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true);
+		binder.registerCustomEditor(Date.class, dateEditor);
+	}
+	@GetMapping("/add")
+	public String getForm() {
+		return "addEmployee";
+	}
+	@GetMapping("/added")
+	public String submitForm() {
+		return "addEmployee";
+	}
+}

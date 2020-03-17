@@ -1,0 +1,10 @@
+package com.capgemeini.springrest.beans;
+
+import lombok.Data;
+
+@Data
+public class EmployeeResponse {
+	private String error;
+	private String message;
+	
+}

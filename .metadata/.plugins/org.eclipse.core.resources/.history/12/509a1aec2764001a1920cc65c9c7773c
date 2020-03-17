@@ -1,0 +1,5 @@
+package com.capgemeini.springrest.exception;
+
+public class EmployeeException {
+
+}

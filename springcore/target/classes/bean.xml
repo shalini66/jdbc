@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- <bean id="hello" class="com.capgemini.springcore.bean.Hello"></bean> -->
+	<bean id="addre"
+		class="com.capgemini.springcore.bean.EmployeeAddressInfo">
+		<property name="aid" value="100"></property>
+		<property name="addressType" value="permanent"></property>
+		<property name="city" value="Hyd"></property>
+		<constructor-arg name="aid" value="101"></constructor-arg> <constructor-arg 
+			name="addressType" value="current"></constructor-arg> <constructor-arg name="city" 
+			value="mumbai"></constructor-arg>
+	</bean>
+
+	<bean id="primary"
+		class="com.capgemini.springcore.bean.EmployeePrimaryInfo">
+		<constructor-arg name="id" value="1"></constructor-arg> <constructor-arg 
+			name="name" value="Chinni"></constructor-arg> <constructor-arg name="address" 
+			ref="addre"></constructor-arg>
+		<property name="id" value="1"></property>
+		<property name="name" value="Shalini"></property>
+		<property name="address" ref="addre"></property>
+	</bean>
+	
+	<bean id="lion" class="com.capgemini.springcore.bean.Lion" ></bean>
+	<bean id="cat" class="com.capgemini.springcore.bean.Cat" primary="true"></bean>
+	
+	<bean id="pet" class="com.capgemini.springcore.bean.Pet" autowire="constructor">
+	
+	<constructor-arg name="name" value="Cat"></constructor-arg>
+	
+	<!-- <constructor-arg name="animal" ref="cat"></constructor-arg> -->
+	
+	<!-- <property name="name" value="Lion"></property> -->
+	<!-- <property name="animal" ref="lion"></property> -->
+	</bean>
+
+</beans> 

@@ -1,0 +1,13 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+@Controller
+public class SpringController {
+	@GetMapping("/hello")
+	public String displayHello(ModelMap map) {
+		map.addAttribute("hello", "Welcome to Spring MVC");
+		return "hello";
+	}
+}

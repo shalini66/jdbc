@@ -1,0 +1,97 @@
+package com.capgemini.springmvc.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.springmvc.dto.EmployeePrimaryInfo;
+@Repository
+public class EmployeeDAOImp implements EmployeeDAO{
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+	@Override
+	public EmployeePrimaryInfo auth(int id, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<EmployeePrimaryInfo> getALLInfo() {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from EmployeePrimaryInfo";
+		Query query = manager.createQuery(jpql);
+		List<EmployeePrimaryInfo> li = query.getResultList();
+		manager.close();
+		return li;
+	}
+
+	@Override
+	public EmployeePrimaryInfo getEmployeeInfo(int id) {
+		EntityManager manager = factory.createEntityManager();
+		EmployeePrimaryInfo primaryInfo = manager.find(EmployeePrimaryInfo.class, id);
+		manager.close();
+		return primaryInfo;
+	}
+
+	@Override
+	public boolean updateEmployeeInfo(EmployeePrimaryInfo info) {
+
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction =manager.getTransaction();
+		boolean isUpdated = false;
+		try {
+			transaction.begin();
+			manager.persist(info);
+			transaction.commit();
+			isUpdated = true;
+			System.out.println("Updated");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			manager.close();
+		}
+		return isUpdated;
+	}
+
+	@Override
+	public boolean deleteEmployeeInfo(int id) {
+		boolean isDeleted = false;
+		EntityManager manager = factory.createEntityManager();
+		EmployeePrimaryInfo primaryInfo = manager.find(EmployeePrimaryInfo.class, id);
+		if(primaryInfo !=null) {
+			EntityTransaction transaction =manager.getTransaction();
+			transaction.begin();
+			manager.remove(primaryInfo);
+			transaction.commit();
+			isDeleted = true;
+		}
+		manager.close();
+		return isDeleted;
+	}
+
+	@Override
+	public boolean createEmployeeInfo(EmployeePrimaryInfo info) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		boolean isAdded = false;
+		try {
+			transaction.begin();
+			manager.persist(info);
+			transaction.commit();
+			isAdded = true;
+			System.out.println("Added");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			manager.close();
+		}
+		return isAdded;
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.capgemeini.springrest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.capgemeini.springrest.beans.EmployeePrimaryInfo;
+import com.capgemeini.springrest.service.EmployeeService;
+@Controller
+public class EmployeeRestController {
+	@Autowired
+	private EmployeeService service;
+	@GetMapping(path = "/getEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public EmployeePrimaryInfo getEmployee(int id) {
+		EmployeePrimaryInfo info = service.getEmployeeInfo(id);
+		//System.out.println(info);
+		return info;
+	}
+
+	@PostMapping(path = "/addEmployee",
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE )
+	@ResponseBody
+	public boolean addEmployee(EmployeePrimaryInfo info) {
+		return service.createEmployeeInfo(info);
+
+	}
+}

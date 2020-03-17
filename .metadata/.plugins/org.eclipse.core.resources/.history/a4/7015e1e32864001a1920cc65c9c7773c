@@ -1,0 +1,5 @@
+package com.capgemeini.springrest.controller;
+
+public class RestControllerAdvice {
+
+}

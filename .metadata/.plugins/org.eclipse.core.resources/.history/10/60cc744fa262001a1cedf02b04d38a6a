@@ -1,0 +1,46 @@
+package com.capgemini.springmvc.service;
+
+import java.util.List;
+
+import com.capgemini.springmvc.dao.EmployeeDAO;
+import com.capgemini.springmvc.dto.EmployeePrimaryInfo;
+import com.capgemini.springmvc.factory.EmployeeFactory;
+
+public class EmployeeServiceImp implements EmployeeService{
+	//EmployeeDAO dao = EmployeeFactory.
+	@Override
+	public EmployeePrimaryInfo auth(int empId, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<EmployeePrimaryInfo> getALLInfo() {
+		
+		return null;
+	}
+
+	@Override
+	public EmployeePrimaryInfo getEmployeeInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateEmployeeInfo(EmployeePrimaryInfo info) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteEmployeeInfo(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean createEmployeeInfo(EmployeePrimaryInfo info) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

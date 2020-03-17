@@ -1,0 +1,10 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.ui.ModelMap;
+
+public class SpringController {
+	public String displayHello(ModelMap map) {
+		map.addAttribute("hello", "Welcome to Spring MVC");
+		return "hello";
+	}
+}

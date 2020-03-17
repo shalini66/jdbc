@@ -1,0 +1,12 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+@ControllerAdvice
+public class SpringControllerException {
+	public String exception(ModelMap map) {
+		map.addAttribute("error", "Not Able to Execute It");
+		return "error";
+	}
+}

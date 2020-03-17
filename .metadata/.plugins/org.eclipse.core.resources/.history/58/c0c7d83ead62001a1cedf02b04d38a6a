@@ -1,0 +1,15 @@
+package com.capgemini.springmvc.factory;
+
+import com.capgemini.springmvc.dao.EmployeeDAO;
+import com.capgemini.springmvc.dao.EmployeeDAOImp;
+import com.capgemini.springmvc.service.EmployeeService;
+import com.capgemini.springmvc.service.EmployeeServiceImp;
+
+public class EmployeeFactory {
+	public static EmployeeDAO getEmployeeDAO() {
+		return new EmployeeDAOImp();
+	}
+	public static EmployeeService  getEmployeeService() {
+		return new EmployeeServiceImp();
+	}
+}

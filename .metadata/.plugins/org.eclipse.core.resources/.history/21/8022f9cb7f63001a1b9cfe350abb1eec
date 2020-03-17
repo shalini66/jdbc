@@ -1,0 +1,16 @@
+package com.capgemeini.springrest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.capgemeini.springrest.beans.EmployeePrimaryInfo;
+import com.capgemeini.springrest.service.EmployeeService;
+
+public class EmployeeRestController {
+	@Autowired
+	private EmployeeService service;
+	@GetMapping("/getEmployee")
+	public void getEmployee(int id) {
+		EmployeePrimaryInfo info = service.getEmployeeInfo(id);
+	}
+}
